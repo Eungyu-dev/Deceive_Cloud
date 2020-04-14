@@ -2,16 +2,9 @@
 
 #include <Windows.h>
 #include <bcrypt.h>
-#include <atlstr.h>
 
 #include <iostream>
 #include <string>
-#include <fstream>
-#include <vector>
-
-#include <sstream>
-#include <cstdio>
-#include <cstring>
 
 #include "deceiver.h"
 #include "tools.h"

@@ -5,6 +5,7 @@ void PrintBytes(IN BYTE* pbPrintData, IN DWORD cbDataLen) {
 	for (dwCount = 0; dwCount < cbDataLen; dwCount++) {
 		printf("%02x ", pbPrintData[dwCount]);
 	}
+	printf("\n");
 	return;
 }
 
