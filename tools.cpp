@@ -8,19 +8,19 @@ void PrintBytes(IN BYTE* pbPrintData, IN DWORD cbDataLen) {
 	return;
 }
 
-LARGE_INTEGER getFileSize(HANDLE _hFile) {
-	if (_hFile == INVALID_HANDLE_VALUE) {
+LARGE_INTEGER getFileSize(HANDLE* _hFile) {
+	if (*_hFile == INVALID_HANDLE_VALUE) {
 		std::cerr << "ERRORCODE: " << GetLastError() << std::endl;
 		exit(-1);
 	}
 
 	LARGE_INTEGER larTmp = { 0 };
-	GetFileSizeEx(_hFile, &larTmp);
+	GetFileSizeEx(*_hFile, &larTmp);
 	return larTmp;
 }
 
 LARGE_INTEGER getFileSize(LPCWSTR _filePath) {
-	HANDLE hFile = CreateFileW(_filePath, GENERIC_READ, NULL, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+	HANDLE hFile = CreateFileW(_filePath, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 	if (hFile == INVALID_HANDLE_VALUE) {
 		std::cerr << "ERRORCODE: " << GetLastError() << std::endl;
 		exit(-1);
@@ -31,4 +31,3 @@ LARGE_INTEGER getFileSize(LPCWSTR _filePath) {
 	CloseHandle(hFile);
 	return larTmp;
 }
-

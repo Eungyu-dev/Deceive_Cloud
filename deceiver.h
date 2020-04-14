@@ -11,14 +11,14 @@ private:
                             cbHashObject;
     PBYTE                   pbHashObject,
                             pbHash;
-    PBYTE                   rgbMsg;
-    ULONG                   rgbMsgSize;
 
 public:
-    HashWorker(PBYTE _rgbMsg, ULONG _rgbMsgSize);
+    HashWorker();
 	~HashWorker();
-    BOOL calHash();
-    BOOL calHash(LPCWSTR _hashType, ULONG _buffSize);
+    BOOL calHash(PBYTE _rgbMsg, ULONG _rgbMsgSize);
+    BOOL calHash(PBYTE _rgbMsg, ULONG _rgbMsgSize, LPCWSTR _hashType);
+    BOOL calHash(HANDLE* _hFile, ULONG _offset, ULONG _allocSize);
+    BOOL calHash(HANDLE* _hFile, ULONG _offset, ULONG _allocSize, LPCWSTR _hashType);
 	PBYTE getHash();
     DWORD getHashSize();
 };
